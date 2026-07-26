@@ -2,7 +2,7 @@
 
 A modern React application that fetches and displays Pokemon data live from the [PokeAPI](https://pokeapi.co/). Built with React 18, TypeScript, React Router v6, and Vite.
 
-**Live Demo:** [https://pokemon-iota-ten.vercel.app](https://pokemon-iota-ten.vercel.app)
+**Live Demo:** [https://pokeapi-dashboard.vercel.app](https://pokeapi-dashboard.vercel.app)
 
 ## API Used
 
