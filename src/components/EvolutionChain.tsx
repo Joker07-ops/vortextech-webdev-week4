@@ -1,5 +1,7 @@
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { getEvolutionChain } from "@/data/evolutionChains";
+import { getNameToIdMap } from "@/data";
 import { spriteUrl } from "@/utils/pokemon";
 import { ChevronRightIcon } from "@/components/Icons";
 import styles from "./EvolutionChain.module.css";
@@ -11,6 +13,12 @@ interface Props {
 export default function EvolutionChain({ pokemonName }: Props) {
   const chain = getEvolutionChain(pokemonName);
   if (!chain || chain.length <= 1) return null;
+
+  const [nameMap, setNameMap] = useState<Record<string, number>>({});
+
+  useEffect(() => {
+    getNameToIdMap().then(setNameMap);
+  }, []);
 
   return (
     <div className={styles.wrapper}>
@@ -28,7 +36,7 @@ export default function EvolutionChain({ pokemonName }: Props) {
               className={`${styles.node} ${name === pokemonName.toLowerCase() ? styles.current : ""}`}
             >
               <img
-                src={spriteUrl(name)}
+                src={nameMap[name] ? spriteUrl(nameMap[name]) : ""}
                 alt={name}
                 className={styles.sprite}
                 loading="lazy"

@@ -94,3 +94,15 @@ export async function searchPokemon(
   if (!q) return all;
   return all.filter((p) => p.name.includes(q));
 }
+
+let _nameToIdMap: Record<string, number> | null = null;
+
+export async function getNameToIdMap(): Promise<Record<string, number>> {
+  if (_nameToIdMap) return _nameToIdMap;
+  const all = await getAllPokemon();
+  _nameToIdMap = {};
+  for (const p of all) {
+    _nameToIdMap[p.name] = p.id;
+  }
+  return _nameToIdMap;
+}
