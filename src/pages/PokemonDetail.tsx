@@ -12,6 +12,22 @@ import {
   type LocalPokemon,
 } from "@/data";
 import {
+  ArrowLeftIcon,
+  ArrowRightIcon,
+  SearchIcon,
+  RotateIcon,
+  RulerIcon,
+  ScaleIcon,
+  StarIcon,
+  BarChartIcon,
+  HeartIcon,
+  SwordsIcon,
+  ShieldIcon,
+  SparklesIcon,
+  TargetIcon,
+  WindIcon,
+} from "@/components/Icons";
+import {
   spriteUrl,
   TYPE_COLORS,
   formatHeight,
@@ -30,13 +46,13 @@ const STAT_COLORS: Record<string, string> = {
   speed: "#ec4899",
 };
 
-const STAT_ICONS: Record<string, string> = {
-  hp: "\u2764\uFE0F",
-  attack: "\u2694\uFE0F",
-  defense: "\uD83D\uDEE1\uFE0F",
-  "special-attack": "\u2728",
-  "special-defense": "\uD83D\uDD30",
-  speed: "\uD83D\uDCA8",
+const STAT_ICONS: Record<string, React.ReactNode> = {
+  hp: <HeartIcon size={14} filled />,
+  attack: <SwordsIcon size={14} />,
+  defense: <ShieldIcon size={14} />,
+  "special-attack": <SparklesIcon size={14} />,
+  "special-defense": <TargetIcon size={14} />,
+  speed: <WindIcon size={14} />,
 };
 
 function statRating(value: number): string {
@@ -117,10 +133,12 @@ export default function PokemonDetail() {
           className={styles.back}
           onClick={() => handleBack(navigate)}
         >
-          <span className={styles.backArrow}>{"\u2190"}</span> Back to Catalog
+          <span className={styles.backArrow}><ArrowLeftIcon size={16} /></span> Back to Catalog
         </button>
         <div className={styles.notFound}>
-          <span className={styles.notFoundIcon}>{"\uD83D\uDD0D"}</span>
+          <span className={styles.notFoundIcon}>
+            <SearchIcon size={48} />
+          </span>
           <h2 className={styles.notFoundTitle}>Pokemon not found</h2>
           <p className={styles.notFoundText}>
             &quot;{name}&quot; doesn&apos;t exist in the PokeAPI database.
@@ -165,12 +183,12 @@ export default function PokemonDetail() {
           className={styles.back}
           onClick={() => handleBack(navigate)}
         >
-          <span className={styles.backArrow}>{"\u2190"}</span> Back to Catalog
+          <span className={styles.backArrow}><ArrowLeftIcon size={16} /></span> Back to Catalog
         </button>
         <div className={styles.topActions}>
           <FavoritesButton pokemonId={id} />
           <span className={styles.kbdHint} title="Use arrow keys to navigate">
-            {"\u2190"} {"\u2192"}
+            <ArrowLeftIcon size={12} /> <ArrowRightIcon size={12} />
           </span>
         </div>
       </div>
@@ -182,7 +200,7 @@ export default function PokemonDetail() {
             className={styles.navBtn}
             onClick={() => navigate(`/pokemon/${neighbors.prev}`)}
           >
-            {"\u2190"} {neighbors.prev}
+            <ArrowLeftIcon size={14} /> {neighbors.prev}
           </button>
         ) : (
           <span />
@@ -193,7 +211,7 @@ export default function PokemonDetail() {
             className={styles.navBtn}
             onClick={() => navigate(`/pokemon/${neighbors.next}`)}
           >
-            {neighbors.next} {"\u2192"}
+            {neighbors.next} <ArrowRightIcon size={14} />
           </button>
         ) : (
           <span />
@@ -247,7 +265,7 @@ export default function PokemonDetail() {
                   draggable={false}
                 />
                 <span className={styles.viewHint}>
-                  <span className={styles.viewHintIcon}>{"\uD83D\uDD04"}</span>{" "}
+                  <span className={styles.viewHintIcon}><RotateIcon size={12} /></span>{" "}
                   View in 3D
                 </span>
               </>
@@ -257,21 +275,21 @@ export default function PokemonDetail() {
           <div className={styles.infoSection}>
             <div className={styles.metaGrid}>
               <div className={styles.metaCard}>
-                <span className={styles.metaIcon}>{"\uD83D\uDCCF"}</span>
+                <span className={styles.metaIcon}><RulerIcon size={20} /></span>
                 <span className={styles.metaLabel}>Height</span>
                 <span className={styles.metaValue}>
                   {formatHeight(pokemon.height)}
                 </span>
               </div>
               <div className={styles.metaCard}>
-                <span className={styles.metaIcon}>{"\u2696\uFE0F"}</span>
+                <span className={styles.metaIcon}><ScaleIcon size={20} /></span>
                 <span className={styles.metaLabel}>Weight</span>
                 <span className={styles.metaValue}>
                   {formatWeight(pokemon.weight)}
                 </span>
               </div>
               <div className={styles.metaCard}>
-                <span className={styles.metaIcon}>{"\u2B50"}</span>
+                <span className={styles.metaIcon}><StarIcon size={20} /></span>
                 <span className={styles.metaLabel}>Base EXP</span>
                 <span className={styles.metaValue}>
                   {pokemon.base_experience ?? "\u2014"}
@@ -289,7 +307,7 @@ export default function PokemonDetail() {
                     title={a.hidden ? "Hidden ability" : "Regular ability"}
                   >
                     {a.hidden && (
-                      <span className={styles.abilityStar}>{"\u2605"}</span>
+                      <span className={styles.abilityStar}><StarIcon size={10} filled /></span>
                     )}
                     {a.name.replace("-", " ")}
                   </span>
@@ -332,7 +350,7 @@ export default function PokemonDetail() {
               return (
                 <div key={s.name} className={styles.statRow}>
                   <span className={styles.statIcon}>
-                    {STAT_ICONS[s.name] || "\uD83D\uDCCA"}
+                    {STAT_ICONS[s.name] || <BarChartIcon size={14} />}
                   </span>
                   <span className={styles.statName}>
                     {s.name.replace("-", " ")}

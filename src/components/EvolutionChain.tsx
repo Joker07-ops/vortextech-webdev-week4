@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { getEvolutionChain } from "@/data/evolutionChains";
 import { spriteUrl } from "@/utils/pokemon";
+import { ChevronRightIcon } from "@/components/Icons";
 import styles from "./EvolutionChain.module.css";
 
 interface Props {
@@ -19,7 +20,7 @@ export default function EvolutionChain({ pokemonName }: Props) {
           <div key={name} className={styles.stage}>
             {i > 0 && (
               <span className={styles.arrow} aria-hidden="true">
-                \u2192
+                <ChevronRightIcon size={18} />
               </span>
             )}
             <Link

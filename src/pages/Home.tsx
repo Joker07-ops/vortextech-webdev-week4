@@ -3,6 +3,7 @@ import { useSearchParams, Link } from "react-router-dom";
 import Loader from "@/components/Loader";
 import ErrorMessage from "@/components/ErrorMessage";
 import PokemonCard from "@/components/PokemonCard";
+import { HeartIcon, SwordsIcon, CloseIcon, ArrowLeftIcon, ArrowRightIcon } from "@/components/Icons";
 import {
   getAllPokemon,
   searchPokemon,
@@ -134,13 +135,13 @@ export default function Home() {
             className={`${styles.favFilter} ${showFavorites ? styles.favActive : ""}`}
             onClick={toggleFavorites}
           >
-            {"\u2764\uFE0F"} Favorites{" "}
+            <HeartIcon size={14} filled /> Favorites{" "}
             {favorites.size > 0 && (
               <span className={styles.favCount}>{favorites.size}</span>
             )}
           </button>
           <Link to="/compare" className={styles.compareLink}>
-            {"\u2694\uFE0F"} Compare
+            <SwordsIcon size={14} /> Compare
           </Link>
         </div>
       </div>
@@ -165,7 +166,7 @@ export default function Home() {
             type="button"
             aria-label="Clear search"
           >
-            {"\u2715"}
+            <CloseIcon size={14} />
           </button>
         )}
       </div>
@@ -193,7 +194,7 @@ export default function Home() {
             type="button"
             aria-label="Previous page"
           >
-            {"\u2190"} Prev
+            <ArrowLeftIcon size={14} /> Prev
           </button>
           <span className={styles.pageInfo}>
             Page {currentPage} of {totalPages}
@@ -205,7 +206,7 @@ export default function Home() {
             type="button"
             aria-label="Next page"
           >
-            Next {"\u2192"}
+            Next <ArrowRightIcon size={14} />
           </button>
         </nav>
       )}

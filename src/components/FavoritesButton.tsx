@@ -1,4 +1,5 @@
 import { useFavoritesContext } from "@/context/FavoritesContext";
+import { HeartIcon } from "@/components/Icons";
 import styles from "./FavoritesButton.module.css";
 
 interface Props {
@@ -23,7 +24,7 @@ export default function FavoritesButton({ pokemonId, size = "md" }: Props) {
       title={active ? "Remove from favorites" : "Add to favorites"}
     >
       <span className={styles.heart} aria-hidden="true">
-        {active ? "\u2764\uFE0F" : "\uD83E\uDDE1"}
+        <HeartIcon size={size === "sm" ? 14 : 18} filled={active} />
       </span>
     </button>
   );

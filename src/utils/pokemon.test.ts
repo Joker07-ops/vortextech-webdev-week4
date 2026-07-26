@@ -2,14 +2,18 @@ import { describe, it, expect } from "vitest";
 import { spriteUrl, formatHeight, formatWeight, TYPE_COLORS } from "./pokemon";
 
 describe("spriteUrl", () => {
-  it("returns a local sprite path for a given numeric ID", () => {
+  it("returns a PokeAPI sprite URL for a given numeric ID", () => {
     const url = spriteUrl(25);
-    expect(url).toBe("/sprites/25.png");
+    expect(url).toBe(
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png",
+    );
   });
 
   it("accepts string IDs", () => {
     const url = spriteUrl("150");
-    expect(url).toBe("/sprites/150.png");
+    expect(url).toBe(
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/150.png",
+    );
   });
 });
 

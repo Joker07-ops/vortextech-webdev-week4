@@ -1,4 +1,5 @@
 import React from "react";
+import { CrashIcon } from "@/components/Icons";
 
 interface ErrorBoundaryProps {
   children: React.ReactNode;
@@ -32,7 +33,7 @@ export default class ErrorBoundary extends React.Component<
         <div className="error-boundary" role="alert">
           <div className="error-boundary-content">
             <span className="error-boundary-icon" aria-hidden="true">
-              💥
+              <CrashIcon size={48} />
             </span>
             <h1 className="error-boundary-title">Something went wrong</h1>
             <p className="error-boundary-message">

@@ -1,6 +1,7 @@
 import { useState, useRef, useCallback, useEffect } from "react";
 import { spriteUrl } from "@/utils/pokemon";
 import { TYPE_COLORS } from "@/utils/pokemon";
+import { CloseIcon } from "@/components/Icons";
 import styles from "./PokemonViewer3D.module.css";
 
 interface PokemonViewer3DProps {
@@ -128,7 +129,7 @@ export default function PokemonViewer3D({
           type="button"
           aria-label="Close 3D viewer"
         >
-          ✕
+          <CloseIcon size={20} />
         </button>
 
         <div className={styles.hud}>
