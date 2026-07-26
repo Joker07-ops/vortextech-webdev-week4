@@ -1,0 +1,93 @@
+.wrapper {
+  position: relative;
+  z-index: 1;
+  margin-top: 1.5rem;
+  padding: 1.5rem 2.5rem 2rem;
+  background: var(--bg-card);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.heading {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-secondary);
+  margin-bottom: 1.2rem;
+}
+
+.chain {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.stage {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.arrow {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  opacity: 0.5;
+}
+
+.node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: background var(--transition), border-color var(--transition),
+    transform var(--transition);
+  text-decoration: none;
+}
+
+.node:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.current {
+  border-color: var(--accent);
+  background: rgba(59, 130, 246, 0.1);
+  box-shadow: 0 0 16px rgba(59, 130, 246, 0.15);
+}
+
+.sprite {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+
+.name {
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  color: var(--text-primary);
+}
+
+@media (max-width: 640px) {
+  .wrapper {
+    padding: 1.25rem;
+  }
+
+  .sprite {
+    width: 48px;
+    height: 48px;
+  }
+
+  .node {
+    padding: 0.5rem 0.65rem;
+  }
+}

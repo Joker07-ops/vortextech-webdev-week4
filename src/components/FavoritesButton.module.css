@@ -1,0 +1,44 @@
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: none;
+  cursor: pointer;
+  transition: transform var(--transition);
+  z-index: 2;
+}
+
+.btn:hover {
+  transform: scale(1.15);
+}
+
+.btn:active {
+  transform: scale(0.95);
+}
+
+.sm {
+  width: 28px;
+  height: 28px;
+}
+
+.md {
+  width: 36px;
+  height: 36px;
+}
+
+.heart {
+  line-height: 1;
+}
+
+.sm .heart {
+  font-size: 1rem;
+}
+
+.md .heart {
+  font-size: 1.3rem;
+}
+
+.active .heart {
+  filter: none;
+}

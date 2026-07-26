@@ -1,0 +1,610 @@
+.detail {
+  position: relative;
+  max-width: 960px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+/* ===== Type-colored background glow ===== */
+.typeGlow {
+  position: fixed;
+  top: -200px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 700px;
+  height: 700px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--type-color-20, rgba(59, 130, 246, 0.2)) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+  animation: glowPulse 4s ease-in-out infinite alternate;
+}
+
+@keyframes glowPulse {
+  from { opacity: 0.5; transform: translateX(-50%) scale(1); }
+  to { opacity: 0.8; transform: translateX(-50%) scale(1.1); }
+}
+
+/* ===== Back button ===== */
+.back {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--radius-sm);
+  transition: color var(--transition), background var(--transition);
+}
+
+.back:hover {
+  color: var(--accent);
+  background: rgba(59, 130, 246, 0.08);
+}
+
+.backArrow {
+  font-size: 1.1rem;
+  transition: transform var(--transition);
+}
+
+.back:hover .backArrow {
+  transform: translateX(-3px);
+}
+
+/* ===== Top bar ===== */
+.topBar {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.topActions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.kbdHint {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  opacity: 0.5;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-sm);
+  user-select: none;
+}
+
+/* ===== Nav row ===== */
+.navRow {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.navBtn {
+  padding: 0.4rem 0.9rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-sm);
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  cursor: pointer;
+  transition: color var(--transition), border-color var(--transition),
+    background var(--transition);
+}
+
+.navBtn:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: rgba(59, 130, 246, 0.08);
+}
+
+/* ===== Main card ===== */
+.card {
+  position: relative;
+  z-index: 1;
+  background: var(--bg-card);
+  border-radius: 20px;
+  border: 1px solid var(--type-color-20, rgba(255, 255, 255, 0.05));
+  overflow: hidden;
+  box-shadow:
+    0 0 0 1px var(--type-color-20, rgba(255, 255, 255, 0.03)),
+    0 4px 24px rgba(0, 0, 0, 0.3),
+    0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* ===== Card header ===== */
+.cardHeader {
+  padding: 2rem 2.5rem 0;
+}
+
+.cardHeaderTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.25rem;
+}
+
+.cardId {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--type-color, var(--accent));
+  letter-spacing: 0.04em;
+  opacity: 0.8;
+}
+
+.cardTypes {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.typeBadge {
+  padding: 0.25rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #fff;
+}
+
+.cardName {
+  font-size: clamp(2rem, 6vw, 3rem);
+  font-weight: 900;
+  text-transform: capitalize;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+  background: linear-gradient(135deg, var(--text-primary) 0%, var(--type-color, var(--accent)) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ===== Layout ===== */
+.layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  padding: 1.5rem 2.5rem 2rem;
+}
+
+@media (min-width: 640px) {
+  .layout {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+}
+
+/* ===== Image section ===== */
+.imageSection {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(ellipse at 50% 40%, var(--type-color-20, rgba(59, 130, 246, 0.08)), transparent 70%);
+  border-radius: 16px;
+  padding: 2.5rem 2rem;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  transition: background 0.3s ease;
+}
+
+.imageSection:hover {
+  background: radial-gradient(ellipse at 50% 40%, var(--type-color-40, rgba(59, 130, 246, 0.15)), transparent 70%);
+}
+
+.imageSection:hover .viewHint {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.imageSection:hover .image {
+  transform: scale(1.06);
+  filter: drop-shadow(0 16px 40px var(--type-color-40, rgba(59, 130, 246, 0.3)));
+}
+
+.imageSection:hover .imageRing {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.imageAura {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--type-color-20, rgba(59, 130, 246, 0.15)), transparent 70%);
+  animation: auraPulse 3s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+@keyframes auraPulse {
+  from { transform: scale(0.9); opacity: 0.5; }
+  to { transform: scale(1.2); opacity: 0.8; }
+}
+
+.imageRing {
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  border: 2px solid var(--type-color-20, rgba(59, 130, 246, 0.1));
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  pointer-events: none;
+  animation: ringSpin 8s linear infinite;
+}
+
+@keyframes ringSpin {
+  to { transform: rotate(360deg); }
+}
+
+.image {
+  position: relative;
+  width: 100%;
+  max-width: 260px;
+  height: auto;
+  filter: drop-shadow(0 8px 24px var(--type-color-20, rgba(59, 130, 246, 0.15)));
+  user-select: none;
+  pointer-events: none;
+  transition: transform 0.35s ease, filter 0.35s ease;
+}
+
+.viewHint {
+  position: absolute;
+  bottom: 0.75rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(6px);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--accent);
+  background: rgba(11, 14, 20, 0.85);
+  padding: 0.35rem 1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+  white-space: nowrap;
+  backdrop-filter: blur(8px);
+}
+
+.viewHintIcon {
+  font-size: 0.85rem;
+}
+
+.imageFallback {
+  font-size: 5rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  opacity: 0.3;
+}
+
+/* ===== Info section ===== */
+.infoSection {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* ===== Meta grid ===== */
+.metaGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.6rem;
+}
+
+.metaCard {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 14px;
+  padding: 1rem 0.5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  transition: background var(--transition), border-color var(--transition);
+}
+
+.metaCard:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.metaIcon {
+  font-size: 1.3rem;
+  margin-bottom: 0.1rem;
+}
+
+.metaLabel {
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+}
+
+.metaValue {
+  font-size: 1.1rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+/* ===== Sections ===== */
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.sectionHeading {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-secondary);
+}
+
+/* ===== Abilities ===== */
+.abilitiesList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.abilityTag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  background: rgba(59, 130, 246, 0.1);
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  border: 1px solid rgba(59, 130, 246, 0.15);
+  transition: background var(--transition);
+}
+
+.abilityTag:hover {
+  background: rgba(59, 130, 246, 0.18);
+}
+
+.abilityHidden {
+  background: rgba(167, 139, 250, 0.1);
+  color: #a78bfa;
+  border-color: rgba(167, 139, 250, 0.15);
+}
+
+.abilityHidden:hover {
+  background: rgba(167, 139, 250, 0.18);
+}
+
+.abilityStar {
+  font-size: 0.7rem;
+}
+
+/* ===== Type row ===== */
+.typeRow {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.typeCard {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.4rem 0.9rem;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.typeDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.typeCardName {
+  color: var(--text-primary);
+}
+
+/* ===== Stats section ===== */
+.statsSection {
+  padding: 0 2.5rem 2.5rem;
+}
+
+.statsHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.statsTotal {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.statsTotal strong {
+  color: var(--text-primary);
+  font-weight: 800;
+}
+
+.statsGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.statRow {
+  display: grid;
+  grid-template-columns: 28px 110px 42px 1fr;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.statIcon {
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.statName {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  color: var(--text-secondary);
+  text-align: right;
+  white-space: nowrap;
+}
+
+.statValue {
+  font-size: 0.85rem;
+  font-weight: 800;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.statBarTrack {
+  height: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 999px;
+  overflow: hidden;
+  position: relative;
+}
+
+.statBarFill {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, var(--bar-color, var(--accent)), color-mix(in srgb, var(--bar-color, var(--accent)), white 25%));
+  border-radius: 999px;
+  animation: barFill 0.8s var(--bar-delay, 0s) ease-out forwards;
+}
+
+@keyframes barFill {
+  to { width: var(--bar-width, 0%); }
+}
+
+.statExcellent .statBarFill { box-shadow: 0 0 8px color-mix(in srgb, var(--bar-color, var(--accent)), transparent 60%); }
+.statGreat .statBarFill { box-shadow: 0 0 6px color-mix(in srgb, var(--bar-color, var(--accent)), transparent 70%); }
+
+/* ===== Responsive ===== */
+@media (max-width: 640px) {
+  .cardHeader {
+    padding: 1.5rem 1.25rem 0;
+  }
+
+  .layout {
+    padding: 1.25rem;
+    gap: 1.5rem;
+  }
+
+  .statsSection {
+    padding: 0 1.25rem 1.5rem;
+  }
+
+  .statRow {
+    grid-template-columns: 24px 85px 36px 1fr;
+    gap: 0.4rem;
+  }
+
+  .metaGrid {
+    gap: 0.4rem;
+  }
+
+  .metaCard {
+    padding: 0.75rem 0.35rem;
+  }
+
+  .metaIcon {
+    font-size: 1.1rem;
+  }
+
+  .metaValue {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .cardName {
+    font-size: 1.6rem;
+  }
+
+  .statRow {
+    grid-template-columns: 20px 70px 32px 1fr;
+    gap: 0.3rem;
+  }
+
+  .statName {
+    font-size: 0.72rem;
+  }
+}
+
+/* ===== Not Found ===== */
+.notFound {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
+  gap: 1rem;
+  text-align: center;
+}
+
+.notFoundIcon {
+  font-size: 3.5rem;
+}
+
+.notFoundTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.notFoundText {
+  color: var(--text-secondary);
+  max-width: 360px;
+}
+
+.notFoundBtn {
+  margin-top: 0.5rem;
+  padding: 0.6rem 1.8rem;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--transition);
+}
+
+.notFoundBtn:hover {
+  background: var(--accent-hover);
+}
