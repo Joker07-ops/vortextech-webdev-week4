@@ -1,5 +1,5 @@
 export function spriteUrl(id: number | string): string {
-  return `/sprites/${id}.png`;
+  return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`;
 }
 
 export const TYPE_COLORS: Record<string, string> = {
