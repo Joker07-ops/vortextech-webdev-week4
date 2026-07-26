@@ -29,3 +29,6 @@ coverage/
 # Local data (large, regenerated via scripts)
 src/data/pokemon.json
 public/sprites/
+
+.vercel
+.env*
